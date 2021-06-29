@@ -1,0 +1,358 @@
+---
+title: "Residency II: Data Visualization and Qualitative Analysis"
+subtitle: "Southern Wesleyan University"
+author: "Joshua Rosenberg"
+date: "2021/06/28"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r}
+library(tidyverse)
+```
+
+# 0. Welcome!
+
+Our focus:
+
+- Data visualization
+- Qualitative (text) analysis
+
+---
+
+# 0. Welcome!
+
+Our tools and process: 
+
+- We will primarily use the open-source software *R*
+- We will engage in a combination of more and less _scaffolded_ complex activities that also vary based upon how _self-directed_ they are:
+  - Coding together
+  - Guided practice
+  - "Reach" activities
+- We'll engage in each of these activities for our two areas of focus
+- We'll do these within this project in RStudio Cloud (though we'll discuss how to work outside of the cloud later)
+
+---
+
+# 0. Agenda
+
+There are three major sessions: 
+
+0. Prelude (8:30 - 8:35)   
+1. Introduction (8:35 - 8:45 am)
+2. Data visualization (8:45 - 10:00 am)
+3. Qualitative analysis (10:15 - 11:25 am)
+4. Summary (11:25 - 11:30 am)  
+
+---
+
+# 1. Introduction
+
+Organization:
+
+A. Me  
+B. You  
+C. Using R   
+D. Participating in the R community  
+E. The 'Getting Started' task
+
+---
+
+# 1A. Me
+
+.pull-left[
+* Joshua Rosenberg, Ph.D.
+* Contact: 
+  * [@jrosenberg6432](https://twitter.com/jrosenberg6432)
+  * [jmrosenberg@utk.edu](mailto:jmrosenberg@utk.edu)
+  * https://joshuamrosenberg.com
+* Assistant Professor, STEM Education, University of Tennessee, Knoxville
+* Dad 
+* Primary areas of interest:
+  * Data science in education
+  * Educational data science
+  * Science education
+* Former HS science teacher (near Gaffney, NC)
+* PI, Co-PI, or personnel for seven funded research projects, including the NSF-funded [LASER Institute](https://www.fi.ncsu.edu/projects/laser-institute/)
+]
+
+.pull-right[
+
+![katie](img/kr-jr.jpg)
+
+![bike](img/joro-bike.gif)
+
+]
+
+---
+
+# 1B. You
+
+https://bit.ly/swures
+
+---
+
+# 1C. Using R
+
+- *R* is a statistical software program, like SPSS and Microsoft Excel
+- Slightly different from other software, *R* is based on writing code
+- There are a number of benefits associated with using *R*:
+  - *R* works on any computer
+  - *R* is freely-available
+  - *R* is open-source, which means others can add-on to it
+  - *R* has powerful data visualization and qualitative analysis capabilities
+  - There is a great community of *R* users to support your use of it
+  
+---
+
+# 1D. Participating in the R community
+
+- Using *R* puts you in the position of not only being an *R* user, but also as 
+a participant in the *R* community
+- There is a rich community of *R* users in schools and districts, at Universities,
+and in companies and non-profit organizations
+- There is also a rich online community: [#rstats](https://twitter.com/hashtag/rstats?src=hashtag_click), [RWeekly](https://rweekly.org/), [#r4ds](https://twitter.com/hashtag/r4ds?src=hashtag_click)
+- When you learn *R*, you are learning to participate in the R community as well as learning a skill
+- R users rely on others for help
+- R users spend a lot of time searching for answers to problems
+- In this workshop, we'll consider how to participate in the R community as well as how to learn to use R
+
+---
+
+# 1E. The 'Getting Started' task
+
+What questions do you have? 
+
+---
+
+# 2. Data visualization
+
+Organization:
+
+A. General principles  
+B. Coding together   
+C. Guided practice    
+D. Reach activities   
+
+---
+
+# 2A. General principles
+
+When creating graphs, consider what you want to visualize (e.g., raw data and/or a summary or model of the data)
+
+.pull-left[
+**Graphing the raw data**
+```{r, echo = FALSE}
+library(ggplot2)
+p <- ggplot(mtcars, aes(wt, mpg))
+p + geom_point()
+```
+]
+
+.pull-right[
+**Graphing a model of the data**
+```{r, echo = FALSE, message = FALSE}
+library(ggplot2)
+p <- ggplot(mtcars, aes(wt, mpg))
+p + geom_smooth(method = "lm")
+```
+]
+
+---
+
+# 2A. General principles
+
+When creating graphs, consider the message every element (e.g., geometric objects, color, and labels) conveys
+
+.pull-left[
+**Using color**
+```{r, echo = FALSE}
+library(ggplot2)
+p <- ggplot(mtcars, aes(wt, mpg, color = factor(cyl)))
+p + geom_point()
+```
+]
+
+.pull-right[
+**Using shape**
+```{r, echo = FALSE, message = FALSE}
+library(ggplot2)
+p <- ggplot(mtcars, aes(wt, mpg, shape = factor(cyl)))
+p + geom_point()
+```
+]
+
+---
+
+# 2A. General principles
+
+When creating graphs, consider the purpose of the visualization and its audience (e.g., yourself, collaborators, and others)
+
+.pull-left[
+**Using a theme**
+```{r, echo = FALSE}
+library(ggplot2)
+p <- ggplot(mtcars, aes(wt, mpg, color = factor(cyl)))
+p + geom_point() + theme_minimal()
+```
+]
+
+.pull-right[
+**Using labels**
+```{r, echo = FALSE, message = FALSE}
+library(ggplot2)
+p <- ggplot(mtcars, aes(wt, mpg, color = factor(cyl)))
+p + geom_point() + xlab("Weight") + ylab("Miles per Gallon") + scale_color_discrete("# of Cylinders") + ggtitle("Fuel Efficiency and the Weight of and No. of Cylinders for Cars")
+```
+]
+
+---
+
+# 2B. Coding together
+
+Let's head over to `coding-together.R`!
+
+---
+
+# 2C. Guided practice  
+
+Let's head over to `guided-practice.Rmd`!
+
+---
+
+# 2D. Reach activities   
+
+- Load your own data into RStudio Cloud (see the 'Upload' button in the Files pane on the right) and create one or more of the visualizations you created using the online science classes data
+- Browse the [R Graphics Cookbook](https://r-graphics.org/) and consider creating some of the figures you see there
+- Read over [the data visualization chapter](https://r4ds.had.co.nz/data-visualisation.html) in R4DS
+
+---
+
+# 3. Qualitative analysis
+
+Organization:
+
+A. General principles
+B. Coding together   
+C. Guided practice    
+D. "Reach" activities   
+
+---
+
+# 3A. General principles
+
+One way to carry out qualitative analysis is to examine the _tokens_, or words, in text.
+
+**Example text, with one line per line in the book**
+
+```{r, echo = FALSE}
+library(tidytext)
+library(janeaustenr)
+
+d <- tibble(txt = prideprejudice)
+d
+```
+
+---
+
+# 3A. General principles
+
+One way to carry out qualitative analysis is to examine the _tokens_, or words, in text.
+
+**Tokens (words) in the book**
+
+```{r, echo = FALSE}
+library(tidytext)
+library(janeaustenr)
+
+d <- tibble(txt = prideprejudice)
+d %>%
+  unnest_tokens(word, txt)
+```
+]
+
+---
+
+# 3A. General principles
+
+We can prepare and clean the tokens in a number of ways:
+
+- making all of the tokens lower-case
+- removing punctuation
+- removing common words (e.g., "and", "the", and "an"), or _stopwords_
+
+---
+
+# 3A. General principles
+
+Once our tokens are prepared and cleaned, we can carry out a number of analyses, such as of:
+
+- the most frequent terms (think of a word cloud!)
+- the presence of particular, key terms
+- the sentiment (positive, neutral, and negative) of terms
+
+---
+
+# 3B. Coding together
+
+Let's head over to `coding-together.R`!
+
+---
+
+# 3C. Guided practice
+
+Let's head over to `guided-practice.Rmd`!
+
+---
+
+# 3D. Reach activities
+
+- Load your own qualitative data and carry out one or more of the analyses we carried out
+- Browse the [Text Mining With R](https://www.tidytextmining.com/) book
+- Explore what the [quanteda](https://quanteda.io/) package can allow you to do
+
+---
+
+# Summary
+
+- We focused on two topics:
+  - Data visualization
+  - Qualitative analysis
+- We worked on each of these in three ways, that began more scaffolded:
+  - Coding together
+  - Guided practice
+  - "Reach" activities
+- Throughout, we considered how using R is as much about participating in a community
+as it is about learning specific skills
+
+---
+
+# Learning and doing more
+
+- General books:
+  - [*R for Data Science*](https://r4ds.had.co.nz/)
+  - [*Data Science in Education Using R*](https://datascienceineducation.com/)
+- Learning resource: 
+  - [*RStudio Education*](https://education.rstudio.com/learn/)
+- Statistics and modeling:
+  - [*Learning Statistics with R*](https://learningstatisticswithr.com/)
+- Community: [#rstats](https://twitter.com/hashtag/rstats?src=hashtag_click), [RWeekly](https://rweekly.org/), [#r4ds](https://twitter.com/hashtag/r4ds?src=hashtag_click)
+
+---
+
+## Thank you and contact
+
+**Thank you!**
+
+**Contact**
+
+* Joshua Rosenberg, Ph.D.
+* Contact: 
+  * [@jrosenberg6432](https://twitter.com/jrosenberg6432)
+  * [jmrosenberg@utk.edu](mailto:jmrosenberg@utk.edu)
+  * https://joshuamrosenberg.com

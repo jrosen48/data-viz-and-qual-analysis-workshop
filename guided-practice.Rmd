@@ -1,0 +1,133 @@
+---
+title: "Guided Practice"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+```
+
+## Loading, setting up
+
+Click the green arrow to the right to run this code chunk.
+
+```{r}
+library(tidyverse)
+library(here)
+library(janitor)
+library(tidykids)
+
+# loading data
+d <- read_csv(here("data", "sci-online-classes.csv"))
+
+# making the names easier to read and type 
+d <- clean_names(d)
+
+# selecting particular variables
+d <- d %>% 
+  select(student_id:gender, time_spent_hours, int, pc, uv)
+```
+
+## Data visualization
+
+### Visualizing a distribution
+
+Change the `final_grade_cems` variable to `time_spent_hours` in the code below and then run this code chunk by clicking the green arrow.
+
+```{r}
+d %>% 
+  ggplot(aes(x = final_grade_cems)) +
+  geom_histogram()
+```
+
+Visualize the distribution using a density plot by replacing `geom_histogram()` with `geom_density()` (then, again, run the code below).
+
+```{r}
+d %>% 
+  ggplot(aes(x = final_grade_cems)) +
+  geom_histogram()
+```
+
+### Visualizing a scatter plot and fitted model
+
+The code below visualizes how students' self-reported *interest in science* relates to their *self-confidence* about their ability in science:
+
+```{r}
+d %>% 
+  ggplot(aes(x = int, y = pc)) +
+  geom_point()
+```
+
+Add a fitted line to the code below with the `geom_smooth()` function we used in the coding together session.
+
+```{r}
+d %>% 
+  ggplot(aes(x = int, y = pc)) +
+  geom_point()
+```
+
+Finally, facet the plot you created in the code chunk above by the subject of the course by adding the `facet_wrap()` line we used in the coding together session:
+
+```{r}
+d %>% 
+  ggplot(aes(x = int, y = pc)) +
+  geom_point()
+```
+
+## Qualitative Analysis
+
+Let's run this code chunk to load packages we'll need and to get setup:
+
+```{r}
+library(tidytext) # note that we've already loaded other packages we will use
+
+# load the text data
+
+td <- read_csv(here("data", "qual-data.csv"))
+
+# making the names easier to read and type 
+td <- clean_names(td)
+
+# inspect the data
+
+glimpse(td)
+```
+
+Create tokens and remove stop words:
+
+```{r}
+# creating tokens
+td <- td %>% 
+  unnest_tokens(word, response)
+
+# inspect the data 
+glimpse(td)
+
+# remove stop words
+td <- td %>% 
+  anti_join(stop_words)
+```
+
+### Most frequent terms
+
+Lastly, examine the 10 most frequent terms:
+
+```{r}
+td %>% 
+  count(word, sort = TRUE) %>% 
+  top_n(10)
+```
+
+### Column chart of the most frequent terms
+
+Then, create a column chart using the `geom_col()` line of code we used when coding together in the data visualization session:
+
+```{r}
+td %>% 
+  count(word, sort = TRUE) %>% 
+  top_n(10)
+```
+
+# Knit!
+
+When complete, knit this file to create a report of your work!

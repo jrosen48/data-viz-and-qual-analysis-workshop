@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Residency II: Data Visualization and Qualitative Analysis</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Joshua Rosenberg" />
+    <script src="libs/header-attrs-2.9/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Residency II: Data Visualization and Qualitative Analysis
+## Southern Wesleyan University
+### Joshua Rosenberg
+### 2021/06/28
+
+---
+
+
+
+```r
+library(tidyverse)
+```
+
+```
+## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+```
+
+```
+## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
+## ✓ tibble  3.1.2     ✓ dplyr   1.0.7
+## ✓ tidyr   1.1.3     ✓ stringr 1.4.0
+## ✓ readr   1.4.0     ✓ forcats 0.5.1
+```
+
+```
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+```
+
+# 0. Welcome!
+
+Our focus:
+
+- Data visualization
+- Qualitative (text) analysis
+
+---
+
+# 0. Welcome!
+
+Our tools and process: 
+
+- We will primarily use the open-source software *R*
+- We will engage in a combination of more and less _scaffolded_ complex activities that also vary based upon how _self-directed_ they are:
+  - Coding together
+  - Guided practice
+  - "Reach" activities
+- We'll engage in each of these activities for our two areas of focus
+- We'll do these within this project in RStudio Cloud (though we'll discuss how to work outside of the cloud later)
+
+---
+
+# 0. Agenda
+
+There are three major sessions: 
+
+0. Prelude (8:30 - 8:35)   
+1. Introduction (8:35 - 8:45 am)
+2. Data visualization (8:45 - 10:00 am)
+3. Qualitative analysis (10:15 - 11:25 am)
+4. Summary (11:25 - 11:30 am)  
+
+---
+
+# 1. Introduction
+
+Organization:
+
+A. Me  
+B. You  
+C. Using R   
+D. Participating in the R community  
+E. The 'Getting Started' task
+
+---
+
+# 1A. Me
+
+.pull-left[
+* Joshua Rosenberg, Ph.D.
+* Contact: 
+  * [@jrosenberg6432](https://twitter.com/jrosenberg6432)
+  * [jmrosenberg@utk.edu](mailto:jmrosenberg@utk.edu)
+  * https://joshuamrosenberg.com
+* Assistant Professor, STEM Education, University of Tennessee, Knoxville
+* Dad 
+* Primary areas of interest:
+  * Data science in education
+  * Educational data science
+  * Science education
+* Former HS science teacher (near Gaffney, NC)
+* PI, Co-PI, or personnel for seven funded research projects, including the NSF-funded [LASER Institute](https://www.fi.ncsu.edu/projects/laser-institute/)
+]
+
+.pull-right[
+
+![katie](img/kr-jr.jpg)
+
+![bike](img/joro-bike.gif)
+
+]
+
+---
+
+# 1B. You
+
+https://bit.ly/swures
+
+---
+
+# 1C. Using R
+
+- *R* is a statistical software program, like SPSS and Microsoft Excel
+- Slightly different from other software, *R* is based on writing code
+- There are a number of benefits associated with using *R*:
+  - *R* works on any computer
+  - *R* is freely-available
+  - *R* is open-source, which means others can add-on to it
+  - *R* has powerful data visualization and qualitative analysis capabilities
+  - There is a great community of *R* users to support your use of it
+  
+---
+
+# 1D. Participating in the R community
+
+- Using *R* puts you in the position of not only being an *R* user, but also as 
+a participant in the *R* community
+- There is a rich community of *R* users in schools and districts, at Universities,
+and in companies and non-profit organizations
+- There is also a rich online community: [#rstats](https://twitter.com/hashtag/rstats?src=hashtag_click), [RWeekly](https://rweekly.org/), [#r4ds](https://twitter.com/hashtag/r4ds?src=hashtag_click)
+- When you learn *R*, you are learning to participate in the R community as well as learning a skill
+- R users rely on others for help
+- R users spend a lot of time searching for answers to problems
+- In this workshop, we'll consider how to participate in the R community as well as how to learn to use R
+
+---
+
+# 1E. The 'Getting Started' task
+
+What questions do you have? 
+
+---
+
+# 2. Data visualization
+
+Organization:
+
+A. General principles  
+B. Coding together   
+C. Guided practice    
+D. Reach activities   
+
+---
+
+# 2A. General principles
+
+When creating graphs, consider what you want to visualize (e.g., raw data and/or a summary or model of the data)
+
+.pull-left[
+**Graphing the raw data**
+![](presentation_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
+]
+
+.pull-right[
+**Graphing a model of the data**
+![](presentation_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
+]
+
+---
+
+# 2A. General principles
+
+When creating graphs, consider the message every element (e.g., geometric objects, color, and labels) conveys
+
+.pull-left[
+**Using color**
+![](presentation_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+]
+
+.pull-right[
+**Using shape**
+![](presentation_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
+]
+
+---
+
+# 2A. General principles
+
+When creating graphs, consider the purpose of the visualization and its audience (e.g., yourself, collaborators, and others)
+
+.pull-left[
+**Using a theme**
+![](presentation_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
+]
+
+.pull-right[
+**Using labels**
+![](presentation_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
+]
+
+---
+
+# 2B. Coding together
+
+Let's head over to `coding-together.R`!
+
+---
+
+# 2C. Guided practice  
+
+Let's head over to `guided-practice.Rmd`!
+
+---
+
+# 2D. Reach activities   
+
+- Load your own data into RStudio Cloud (see the 'Upload' button in the Files pane on the right) and create one or more of the visualizations you created using the online science classes data
+- Browse the [R Graphics Cookbook](https://r-graphics.org/) and consider creating some of the figures you see there
+- Read over [the data visualization chapter](https://r4ds.had.co.nz/data-visualisation.html) in R4DS
+
+---
+
+# 3. Qualitative analysis
+
+Organization:
+
+A. General principles
+B. Coding together   
+C. Guided practice    
+D. "Reach" activities   
+
+---
+
+# 3A. General principles
+
+One way to carry out qualitative analysis is to examine the _tokens_, or words, in text.
+
+**Example text, with one line per line in the book**
+
+
+```
+## # A tibble: 13,030 x 1
+##    txt                                                                      
+##    &lt;chr&gt;                                                                    
+##  1 "PRIDE AND PREJUDICE"                                                    
+##  2 ""                                                                       
+##  3 "By Jane Austen"                                                         
+##  4 ""                                                                       
+##  5 ""                                                                       
+##  6 ""                                                                       
+##  7 "Chapter 1"                                                              
+##  8 ""                                                                       
+##  9 ""                                                                       
+## 10 "It is a truth universally acknowledged, that a single man in possession"
+## # … with 13,020 more rows
+```
+
+---
+
+# 3A. General principles
+
+One way to carry out qualitative analysis is to examine the _tokens_, or words, in text.
+
+**Tokens (words) in the book**
+
+
+```
+## # A tibble: 122,204 x 1
+##    word     
+##    &lt;chr&gt;    
+##  1 pride    
+##  2 and      
+##  3 prejudice
+##  4 by       
+##  5 jane     
+##  6 austen   
+##  7 chapter  
+##  8 1        
+##  9 it       
+## 10 is       
+## # … with 122,194 more rows
+```
+]
+
+---
+
+# 3A. General principles
+
+We can prepare and clean the tokens in a number of ways:
+
+- making all of the tokens lower-case
+- removing punctuation
+- removing common words (e.g., "and", "the", and "an"), or _stopwords_
+
+---
+
+# 3A. General principles
+
+Once our tokens are prepared and cleaned, we can carry out a number of analyses, such as of:
+
+- the most frequent terms (think of a word cloud!)
+- the presence of particular, key terms
+- the sentiment (positive, neutral, and negative) of terms
+
+---
+
+# 3B. Coding together
+
+Let's head over to `coding-together.R`!
+
+---
+
+# 3C. Guided practice
+
+Let's head over to `guided-practice.Rmd`!
+
+---
+
+# 3D. Reach activities
+
+- Load your own qualitative data and carry out one or more of the analyses we carried out
+- Browse the [Text Mining With R](https://www.tidytextmining.com/) book
+- Explore what the [quanteda](https://quanteda.io/) package can allow you to do
+
+---
+
+# Summary
+
+- We focused on two topics:
+  - Data visualization
+  - Qualitative analysis
+- We worked on each of these in three ways, that began more scaffolded:
+  - Coding together
+  - Guided practice
+  - "Reach" activities
+- Throughout, we considered how using R is as much about participating in a community
+as it is about learning specific skills
+
+---
+
+# Learning and doing more
+
+- General books:
+  - [*R for Data Science*](https://r4ds.had.co.nz/)
+  - [*Data Science in Education Using R*](https://datascienceineducation.com/)
+- Learning resource: 
+  - [*RStudio Education*](https://education.rstudio.com/learn/)
+- Statistics and modeling:
+  - [*Learning Statistics with R*](https://learningstatisticswithr.com/)
+- Community: [#rstats](https://twitter.com/hashtag/rstats?src=hashtag_click), [RWeekly](https://rweekly.org/), [#r4ds](https://twitter.com/hashtag/r4ds?src=hashtag_click)
+
+---
+
+## Thank you and contact
+
+**Thank you!**
+
+**Contact**
+
+* Joshua Rosenberg, Ph.D.
+* Contact: 
+  * [@jrosenberg6432](https://twitter.com/jrosenberg6432)
+  * [jmrosenberg@utk.edu](mailto:jmrosenberg@utk.edu)
+  * https://joshuamrosenberg.com
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
